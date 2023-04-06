@@ -1,6 +1,6 @@
 package src.application;
 
-import src.Position;
+import src.boardgame.Position;
 
 public class App {
     public static void main(String[] args) {
