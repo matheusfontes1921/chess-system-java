@@ -5,6 +5,7 @@ import src.chess.ChessMatch;
 import src.chess.ChessPiece;
 import src.chess.ChessPosition;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -31,6 +32,15 @@ public class App {
               ChessPiece capturedPiece = chessMatch1.performChessMove(source, target);
               if(capturedPiece!=null) {
                   captured.add(capturedPiece);
+              }
+              if(chessMatch1.getPromoted() != null) {
+                  System.out.print("Digite a peça para promoção: (B/N/Q/R)");
+                  String type = teclado.nextLine().toUpperCase();
+                  while(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
+                      System.out.println("Tipo inválido para promoção. Digite um novo valor entre as opções.");
+                      type=teclado.nextLine().toUpperCase();
+                  }
+                  chessMatch1.replacePromotedPiece(type);
               }
           }
           catch(ChessException e){
